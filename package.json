@@ -1,0 +1,43 @@
+{
+  "name": "homemadegoodies",
+  "version": "1.0.0",
+  "description": "homemadegoodies is a websapp for selling delish homemade goods",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "nodemon index.js --exec ",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "seed": "node seed"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/salihelfatih/HomemadeGoodies.git"
+  },
+  "author": "Salih Salih",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/salihelfatih/HomemadeGoodies/issues"
+  },
+  "homepage": "https://github.com/salihelfatih/HomemadeGoodies#readme",
+  "dependencies": {
+    "bcrypt-nodejs": "^0.0.3",
+    "bluebird": "^3.7.2",
+    "body-parser": "^1.20.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.2",
+    "express": "^4.18.1",
+    "joi": "^14.3.0",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.10.0",
+    "passport": "^0.6.0",
+    "passport-google-oauth": "^2.0.0",
+    "passport-local": "^1.0.0",
+    "pg": "^8.8.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize-cli": "^6.5.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20",
+    "sequelize": "^6.25.2"
+  }
+}

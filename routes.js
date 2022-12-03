@@ -35,6 +35,7 @@ module.exports = (app) => {
 
   // products routes
   app.get("/vendors/:vendorId/products", ProductsController.index);
+  // app.get("/products", ProductsController.findAllProducts);
   app.get("/products/:productId", ProductsController.show);
   app.post("/products", ProductsController.post);
   app.put("/products/:productId", ProductsController.put);

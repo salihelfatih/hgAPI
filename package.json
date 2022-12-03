@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "homemadegoodies is a websapp for selling delish homemade goods",
   "main": "index.js",
+  "engines": {
+    "node": "12.16.1",
+    "npm": "6.14.4"
+  },
   "scripts": {
     "dev": "nodemon index.js",
     "start": "node index.js --exec ",

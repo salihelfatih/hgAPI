@@ -5,6 +5,7 @@ const morgan = require("morgan");
 const { sequelize } = require("./models");
 const config = require("./config/config");
 const path = require("path");
+const PORT = process.env.PORT || config.server;
 const fs = require("fs");
 // const db = require('./config/database');
 const app = express();
@@ -13,7 +14,6 @@ app.use(bodyParser.json());
 app.use(cors());
 require("./routes")(app);
 // require("dotenv").config();
-const PORT = process.env.PORT || 5000;
 
 if (process.env.NODE_ENV === "production") {
   require("dotenv").config();

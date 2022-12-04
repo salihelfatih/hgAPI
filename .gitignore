@@ -2,6 +2,12 @@
 node_modules
 /dist
 
+# Procfile
+Procfile
+
+#.env file
+.env
+
 
 # local env files
 .env.local

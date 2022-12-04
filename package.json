@@ -4,8 +4,8 @@
   "description": "homemadegoodies is a websapp for selling delish homemade goods",
   "main": "server.js",
   "engines": {
-    "node": "16.17.0",
-    "npm": "9.1.3"
+    "node": "18.12.1",
+    "npm": "8.19.2"
   },
   "scripts": {
     "dev": "nodemon server.js",

@@ -6,8 +6,12 @@ const OrdersController = require("./controllers/OrdersController");
 const VendorsController = require("./controllers/VendorsController");
 const CustomersController = require("./controllers/CustomersController");
 const ReportsController = require("./controllers/ReportsController");
+const FavesController = require("./controllers/FavesController");
 
 module.exports = (app) => {
+  // app.get("/", FavesController.index);
+  app.get("/", VendorsController.index);
+
   app.post("/customers/login", AuthController.loginCustomer);
   app.post("/vendors/login", AuthController.loginVendor);
   app.post("/logout", AuthController.logout);
@@ -27,7 +31,7 @@ module.exports = (app) => {
   app.delete("/customers/:customerId", CustomersController.delete);
   app.delete("/customers", CustomersController.deleteAll);
 
-  app.get("/vendors", VendorsController.index);
+  // app.get("/vendors", VendorsController.index);
   app.get("/vendors/:vendorId", VendorsController.show);
   app.put("/vendors/:vendorId", VendorsController.put);
   app.delete("/vendors/:vendorId", VendorsController.delete);

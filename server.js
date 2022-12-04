@@ -13,10 +13,10 @@ app.use(morgan("combined"));
 app.use(bodyParser.json());
 app.use(cors());
 require("./routes")(app);
-// require("dotenv").config();
+require("dotenv").config();
 
 if (process.env.NODE_ENV === "production") {
-  require("dotenv").config();
+  // require("dotenv").config();
   // app.use(express.static(path.join(__dirname, "../ui/dist")));
 }
 

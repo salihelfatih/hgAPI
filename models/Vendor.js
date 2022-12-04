@@ -2,7 +2,7 @@
 
 const { Model } = require("sequelize");
 const Promise = require("bluebird");
-const bcrypt = Promise.promisifyAll(require("bcryptjs"));
+const bcrypt = Promise.promisifyAll(require("bcrypt-nodejs"));
 
 function hashPassword(vendor, options) {
   const SALT_FACTOR = 8;

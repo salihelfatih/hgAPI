@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
@@ -5,7 +7,7 @@ const morgan = require("morgan");
 const { sequelize } = require("./models");
 // const config = require("./config/config");
 const path = require("path");
-require("dotenv").config();
+
 const PORT = process.env.PORT || 5000;
 const fs = require("fs");
 // const db = require('./config/database');

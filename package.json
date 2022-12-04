@@ -3,10 +3,6 @@
   "version": "1.0.0",
   "description": "homemadegoodies is a websapp for selling delish homemade goods",
   "main": "index.js",
-  "engines": {
-    "node": "12.16.1",
-    "npm": "6.14.4"
-  },
   "scripts": {
     "dev": "nodemon index.js",
     "start": "node index.js --exec ",
@@ -25,13 +21,16 @@
   },
   "homepage": "https://github.com/salihelfatih/HomemadeGoodies#readme",
   "dependencies": {
+    "@hapi/hoek": "^10.0.1",
+    "@hapi/joi": "^17.1.1",
+    "@hapi/topo": "^6.0.0",
     "bcrypt-nodejs": "^0.0.3",
+    "bcryptjs": "^2.4.3",
     "bluebird": "^3.7.2",
     "body-parser": "^1.20.1",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.1",
-    "joi": "^14.3.0",
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.10.0",
     "passport": "^0.6.0",

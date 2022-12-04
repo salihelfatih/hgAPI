@@ -4,7 +4,7 @@ const cors = require("cors");
 const morgan = require("morgan");
 const { sequelize } = require("./models");
 const config = require("./config/config");
-// const path = require("path");
+const path = require("path");
 const PORT = process.env.PORT || config.server;
 // const fs = require('fs');
 // const db = require('./config/database');
@@ -16,8 +16,8 @@ require("./routes")(app);
 require("dotenv").config();
 
 if (process.env.NODE_ENV === "production") {
-  require("dotenv").config();
-  // app.use(express.static(path.join(__dirname, "../ui/dist")));
+  // require("dotenv").config();
+  app.use(express.static(path.join(__dirname, "../ui/dist")));
 }
 
 // app.get(/.*/, function (req, res) {

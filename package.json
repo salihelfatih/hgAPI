@@ -24,7 +24,6 @@
     "@hapi/hoek": "^10.0.1",
     "@hapi/joi": "^17.1.1",
     "@hapi/topo": "^6.0.0",
-    "bcrypt-nodejs": "^0.0.3",
     "bcryptjs": "^2.4.3",
     "bluebird": "^3.7.2",
     "body-parser": "^1.20.1",

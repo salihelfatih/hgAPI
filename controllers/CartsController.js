@@ -40,6 +40,32 @@ module.exports = {
       });
     }
   },
+
+  // get all carts
+  async findAllCarts(req, res) {
+    try {
+      const carts = await Cart.findAll({
+        include: [
+          {
+            model: CartProduct,
+            as: "cartProduct",
+            include: [
+              {
+                model: Product,
+                as: "product",
+              },
+            ],
+          },
+        ],
+      });
+      res.send(carts);
+    } catch (err) {
+      res.status(500).send({
+        error: "An error has occured trying to fetch the carts",
+      });
+    }
+  },
+
   // get a cart by id
   async show(req, res) {
     try {
@@ -66,9 +92,6 @@ module.exports = {
     }
   },
 
-  // when a customer adds a product to their cart add a cartProduct
-  // if they have a cart or create a cart and add a cart with the product
-  // if they don't have a cart
   async post(req, res) {
     try {
       const { customerId } = req.params;
@@ -108,7 +131,6 @@ module.exports = {
           });
         }
       } else {
-        // create a new cart for the customer and add the product to the cart
         const newCart = await Cart.create({
           customerId: customerId,
           status: "active",
@@ -125,6 +147,151 @@ module.exports = {
     } catch (err) {
       res.status(500).send({
         error: "An error has occured trying to add the product to the cart",
+      });
+    }
+  },
+
+  async put(req, res) {
+    try {
+      const { cartId } = req.params;
+      const { productId, quantity } = req.body;
+      const product = await Product.findByPk(productId);
+      if (!product) {
+        return res.status(403).send({
+          error: "The product does not exist",
+        });
+      }
+      const cart = await Cart.findByPk(cartId);
+      if (!cart) {
+        return res.status(403).send({
+          error: "The cart does not exist",
+        });
+      }
+      const cartProduct = await CartProduct.findOne({
+        where: {
+          cartId: cartId,
+          productId: productId,
+        },
+      });
+      if (!cartProduct) {
+        return res.status(403).send({
+          error: "The product does not exist in the cart",
+        });
+      }
+      cartProduct.quantity = quantity;
+      await cartProduct.save();
+      res.send({
+        message: "Product quantity updated",
+      });
+    } catch (err) {
+      res.status(500).send({
+        error: "An error has occured trying to update the product quantity",
+      });
+    }
+  },
+
+  async delete(req, res) {
+    try {
+      const { cartId } = req.params;
+      const cart = await Cart.findByPk(cartId);
+      if (!cart) {
+        return res.status(403).send({
+          error: "The cart does not exist",
+        });
+      }
+      await cart.destroy();
+      res.send({
+        message: "Cart deleted",
+      });
+    } catch (err) {
+      res.status(500).send({
+        error: "An error has occured trying to delete the cart",
+      });
+    }
+  },
+
+  async deleteProduct(req, res) {
+    try {
+      const { cartId, productId } = req.params;
+      const cart = await Cart.findByPk(cartId);
+      if (!cart) {
+        return res.status(403).send({
+          error: "The cart does not exist",
+        });
+      }
+      const cartProduct = await CartProduct.findOne({
+        where: {
+          cartId: cartId,
+          productId: productId,
+        },
+      });
+      if (!cartProduct) {
+        return res.status(403).send({
+          error: "The product does not exist in the cart",
+        });
+      }
+      await cartProduct.destroy();
+      res.send({
+        message: "Product deleted from cart",
+      });
+    } catch (err) {
+      res.status(500).send({
+        error:
+          "An error has occured trying to delete the product from the cart",
+      });
+    }
+  },
+
+  async updateProduct(req, res) {
+    try {
+      const { cartId, productId } = req.params;
+      const { quantity } = req.body;
+      const cart = await Cart.findByPk(cartId);
+      if (!cart) {
+        return res.status(403).send({
+          error: "The cart does not exist",
+        });
+      }
+      const cartProduct = await CartProduct.findOne({
+        where: {
+          cartId: cartId,
+          productId: productId,
+        },
+      });
+      if (!cartProduct) {
+        return res.status(403).send({
+          error: "The product does not exist in the cart",
+        });
+      }
+      cartProduct.quantity = quantity;
+      await cartProduct.save();
+      res.send({
+        message: "Product quantity updated",
+      });
+    } catch (err) {
+      res.status(500).send({
+        error: "An error has occured trying to update the product quantity",
+      });
+    }
+  },
+
+  async checkout(req, res) {
+    try {
+      const { cartId } = req.params;
+      const cart = await Cart.findByPk(cartId);
+      if (!cart) {
+        return res.status(403).send({
+          error: "The cart does not exist",
+        });
+      }
+      cart.status = "completed";
+      await cart.save();
+      res.send({
+        message: "Cart checked out",
+      });
+    } catch (err) {
+      res.status(500).send({
+        error: "An error has occured trying to checkout the cart",
       });
     }
   },

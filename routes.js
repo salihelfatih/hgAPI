@@ -35,8 +35,8 @@ module.exports = (app) => {
   app.delete("/vendors", VendorsController.deleteAll);
 
   // products routes
+  app.get("/products", ProductsController.findAllProducts);
   app.get("/vendors/:vendorId/products", ProductsController.index);
-  // app.get("/products", ProductsController.findAllProducts);
   app.get("/products/:productId", ProductsController.show);
   app.post("/products", ProductsController.post);
   app.put("/products/:productId", ProductsController.put);
@@ -44,8 +44,9 @@ module.exports = (app) => {
   app.delete("/products", ProductsController.deleteAll);
 
   // routes for finding cart products
+  app.get("/carts", CartsController.findAllCarts);
   app.get("/customers/:customerId/carts", CartsController.index);
-  app.get("/customers/:customerId/carts/:cartId", CartsController.show);
+  app.get("/carts/:cartId", CartsController.show);
   app.post("/customers/:customerId/carts", CartsController.post);
   // app.put("/carts/:cartId", CartsController.put);
   // app.delete("/carts/:cartId", CartsController.delete);

@@ -10,7 +10,7 @@
   "scripts": {
     "dev": "nodemon server.js",
     "start": "node server.js --exec ",
-    "devStart": "nodemon server.js --exec babel-node",
+    "devStart": "nodemon server.js --exec",
     "test": "echo \"Error: no test specified\" && exit 1",
     "seed": "node seed"
   },

@@ -67,6 +67,18 @@ module.exports = {
     }
   },
 
+  // get all products
+  async findAllProducts(req, res) {
+    try {
+      const products = await Product.findAll();
+      res.send(products);
+    } catch (err) {
+      res.status(500).send({
+        error: "an error has occured trying to fetch the products",
+      });
+    }
+  },
+
   async show(req, res) {
     try {
       const product = await Product.findOne({

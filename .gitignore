@@ -8,6 +8,11 @@ Procfile
 #.env file
 .env
 
+# config file
+/config/config.json
+
+
+
 
 # local env files
 .env.local

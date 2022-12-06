@@ -23,17 +23,6 @@
   },
   "production": {
     "use_env_variable": "DATABASE_URL",
-    "username": "cvrqvlbyatacif",
-    "password": "7484bf7080b0e245f9ca1303be70fbd6f86399a968e17c0012c02ee1c4a4a1c4",
-    "port": 5432,
-    "database": "d9hjlemuouf0km",
-    "host": "ec2-44-199-143-43.compute-1.amazonaws.com",
-    "dialect": "postgres",
-    "dialectOptions": {
-      "ssl": {
-        "require": true,
-        "rejectUnauthorized": false
-      }
-    }
+    "dialect": "postgres"
   }
 }
